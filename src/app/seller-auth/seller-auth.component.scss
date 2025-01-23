@@ -1,0 +1,19 @@
+  .seller-form h1{
+    color: blueviolet;
+    margin-left:100px;
+  }
+ .seller-form{
+    margin-left:30%
+ }
+  form{
+    display:flex;
+    flex-direction : column;
+    width:500px;
+  }
+  .form-input{
+    margin-bottom : 20px;
+    padding: 5px;
+  }
+  .seller-signup{
+    height: 30px;
+  }
