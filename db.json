@@ -1,0 +1,16 @@
+{
+  "seller": [
+    {
+      "id": "0d70",
+      "name": "Rajee Singh",
+      "emailId": "rajeesinghsengar1997@gmail.com",
+      "password": "abcd"
+    },
+    {
+      "id": "56c7",
+      "name": "Rajee Singh",
+      "password": "abce",
+      "email": "rajeesinghsengar1997@gmail.com"
+    }
+  ]
+}
