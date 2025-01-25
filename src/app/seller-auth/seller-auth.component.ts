@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { SellerService } from '../services/seller.service';
+import { User } from '../constant';
 
 @Component({
   selector: 'app-seller-auth',
@@ -8,7 +10,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './seller-auth.component.scss'
 })
 export class SellerAuthComponent {
-  signup(data:object){
-    console.log(data)
+
+  constructor(private sellerSvc: SellerService) {
+    
+    
+  }
+  signup(data:User){
+   this.sellerSvc.createUser(data).subscribe((result)=>{
+    console.log(result)
+   })
   }
 }
