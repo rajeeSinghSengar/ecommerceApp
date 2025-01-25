@@ -3,15 +3,16 @@ import { FormsModule } from '@angular/forms';
 import { SellerService } from '../services/seller.service';
 import { User } from '../constant';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-seller-auth',
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './seller-auth.component.html',
   styleUrl: './seller-auth.component.scss'
 })
 export class SellerAuthComponent{
-
+  sellerLogin  = true;
   constructor(private sellerSvc: SellerService, private router: Router) {
     
     
@@ -35,5 +36,14 @@ export class SellerAuthComponent{
       console.log("redirectSeller Home called ")
       this.router.navigate(['seller-home'])
     }
+  }
+  login(data:object){
+    console.log(data)
+  }
+  toggleSignUp(){
+    this.sellerLogin = true;
+  }
+  toggleLogin(){
+    this.sellerLogin = false;
   }
 }
