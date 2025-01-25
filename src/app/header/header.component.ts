@@ -30,4 +30,9 @@ ngOnInit(){
     }
   })
 }
+sellerLogOut(){
+  console.log("seller log out ")
+  localStorage.removeItem('seller');
+  this.route.navigate(['home'])
+}
 }
