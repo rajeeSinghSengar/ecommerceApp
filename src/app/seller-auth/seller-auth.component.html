@@ -14,6 +14,7 @@
 
 <div  *ngIf ="sellerLogin" class ="seller-form">
     <h1>Seller Login</h1>
+    <p class="loginErr">{{loginErr}}</p>
     <div class = "form">
         <form #sellerLogin ="ngForm" (ngSubmit) = "login(sellerLogin.value)">
             <input class="form-input" type="email" placeholder ="Enter Email" name ="email" ngModel/>

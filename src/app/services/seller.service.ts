@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User, url } from '../constant';
+import { User, loginUser, url } from '../constant';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -13,5 +13,8 @@ export class SellerService {
    isSellerLoggedIn = new BehaviorSubject<boolean>(false);
    createUser(obj: User):Observable<any>{
       return this.http.post(url+'seller/' , obj)
+   }
+   checkUserLogin(data:loginUser){
+    return this.http.get(`${url}seller?password=${data.password}&email=${data.email}`)
    }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SellerService } from '../services/seller.service';
-import { User } from '../constant';
+import { User, loginUser } from '../constant';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -13,8 +13,8 @@ import { CommonModule } from '@angular/common';
 })
 export class SellerAuthComponent{
   sellerLogin  = true;
+  loginErr = '';
   constructor(private sellerSvc: SellerService, private router: Router) {
-    
     
   }
   ngOnInit() {
@@ -37,8 +37,20 @@ export class SellerAuthComponent{
       this.router.navigate(['seller-home'])
     }
   }
-  login(data:object){
-    console.log(data)
+  login(data:loginUser){
+    this.sellerSvc.checkUserLogin(data).subscribe((result:any)=>
+    {
+      //we found the user
+      if(result.length === 1){
+        this.sellerSvc.isSellerLoggedIn.next(true)
+        localStorage.setItem("seller",JSON.stringify(result))
+        this.loginErr = ''
+        this.router.navigate(['seller-home'])
+      }
+      else if(result.length === 0){
+        this.loginErr = "User is not registered"
+      }
+    })
   }
   toggleSignUp(){
     this.sellerLogin = true;
