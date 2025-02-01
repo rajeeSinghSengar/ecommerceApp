@@ -23,6 +23,7 @@ export class AddProductComponent {
         setTimeout(()=>
         { 
           this.addProductMsg ='';
+          form.reset() //reset  form
         },3000) //remove successsful msg after 3sec
       }
     })
