@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+form{
+    display:flex;
+    flex-direction : column;
+    width:500px;
+  }
+  .form-input{
+    margin-bottom : 20px;
+    padding: 5px;
+  }
