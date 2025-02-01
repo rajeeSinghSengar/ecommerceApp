@@ -10,6 +10,7 @@ import { Route, Router, RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 menuType : string = 'default';
+sellerName : string = "";
 /**
  *
  */
@@ -23,6 +24,8 @@ ngOnInit(){
       //u need to check if user is logged in 
       if(localStorage.getItem('seller')){
       this.menuType = 'seller';
+       const seller = localStorage.getItem('seller')
+       this.sellerName = seller && JSON.parse(seller)[0].name;
       }
     }
     else{
