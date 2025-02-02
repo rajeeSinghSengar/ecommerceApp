@@ -1,0 +1,21 @@
+table{
+    text-align:center;
+    border-collapse: collapse;
+
+}
+table th, table td{
+    border : solid 2px blueviolet;
+    padding :10px;
+}
+table th{
+    color : white;
+    background-color : blueviolet
+}
+img{
+    width : 200px;
+    height:200px;
+}
+.view-product{
+    margin-left :30%;
+    margin-top:20px;
+}

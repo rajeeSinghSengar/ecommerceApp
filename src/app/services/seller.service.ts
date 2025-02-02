@@ -21,4 +21,8 @@ export class SellerService {
     console.log("add Product", productData)
     return this.http.post(`${url}product/`,productData)
    }
+   viewProduct(){
+    return this.http.get<Product[]>(`${url}product/`)
+
+   }
 }

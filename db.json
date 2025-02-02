@@ -11,6 +11,89 @@
       "name": "Rajee Singh",
       "password": "abce",
       "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "f098",
+      "name": "falguni",
+      "password": "abcdg",
+      "email": "falgun@gmail.com"
+    },
+    {
+      "id": "037d",
+      "name": "falguni",
+      "password": "sfsf",
+      "email": "falgun@gmail.com"
+    },
+    {
+      "id": "f436",
+      "name": "Rajee Singh",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "2fba",
+      "name": "",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "1c28",
+      "name": "Harshita",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "f35a",
+      "name": "Gargi Singh",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "f095",
+      "name": "jkk",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "5e06",
+      "name": "",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "6bba",
+      "name": "",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "fe66",
+      "name": "",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "e86b",
+      "name": "",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
+    },
+    {
+      "id": "f17a",
+      "name": "",
+      "password": "Rajee@1997",
+      "email": "rajeesinghsengar1997@gmail.com"
     }
+  ],
+  "product": [
+    {
+      "id": "cb1b",
+      "productname": "clock",
+      "productprice": "3000",
+      "description": "fancy watch",
+      "category": "watch",
+      "imgUrl": "/clock.jpg"
+    }
+   
   ]
 }

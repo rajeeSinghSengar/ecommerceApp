@@ -1,0 +1,26 @@
+<div class = "view-product">
+<table>
+    <thead>
+        <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let list of productList; let i= index">
+            <td>{{list.productname}}</td>
+            <td>{{list.productprice}}</td>
+            <td>{{list.description}}</td>
+            <td>{{list.category}}</td>
+            <td><img [src]="list.imgUrl" alt="Clock Image">
+            <!-- <img src="/clock.jpg" alt="Clock Image">  ADD Image in public folder  -->
+        </td>
+            
+        </tr>
+
+    </tbody>
+</table>
+</div>
