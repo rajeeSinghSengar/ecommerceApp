@@ -13,7 +13,7 @@
     </ul>
     <ul *ngSwitchCase ="'seller'">
         <li><a routerLink= "seller-addproduct">Add Product</a></li>
-        <li><a routerLink= "seller-home">View Product</a></li>
+        <li><a routerLink= "seller-viewproduct">View Product</a></li>
         <li><a (click)= "sellerLogOut()">Log Out</a></li>
         <li><a routerLink= "seller-home">{{sellerName | titlecase}}</a></li>
     </ul>

@@ -3,6 +3,8 @@ import { HomeComponent } from './home/home.component';
 import { SellerAuthComponent } from './seller-auth/seller-auth.component';
 import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { authGuard } from './auth.guard';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ViewProductComponent } from './view-product/view-product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect root to Home
@@ -11,6 +13,16 @@ export const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'seller-addproduct',
+    component: AddProductComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'seller-viewproduct',
+    component: ViewProductComponent,
+    canActivate: [authGuard]
   },
   { path: '**', component: HomeComponent },
 ];
