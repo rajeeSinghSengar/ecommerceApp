@@ -12,7 +12,8 @@ export interface Product{
    productprice: number,
    description: string,
    category :string,
-   imgUrl : string
+   imgUrl : string,
+   id : string
 
 }
 export  const url = 'http://localhost:3000/'

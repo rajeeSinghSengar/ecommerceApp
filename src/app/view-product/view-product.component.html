@@ -7,6 +7,7 @@
         <th>Category</th>
         <th>Description</th>
         <th>Image</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
             <td><img [src]="list.imgUrl" alt="Clock Image">
             <!-- <img src="/clock.jpg" alt="Clock Image">  ADD Image in public folder  -->
         </td>
+        <td><button (click) = "deleteProduct(list.id)">Delete</button></td>
             
         </tr>
 

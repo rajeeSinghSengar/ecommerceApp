@@ -25,4 +25,7 @@ export class SellerService {
     return this.http.get<Product[]>(`${url}product/`)
 
    }
+   deleteProduct(id:string){
+    return this.http.delete(`${url}product/${id}`)
+   }
 }

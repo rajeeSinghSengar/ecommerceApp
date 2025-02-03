@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
 export class ViewProductComponent {
 
   productList : Product[] | undefined;
-
+  deleteProductMsg: string =''
   constructor(private sellerSvc : SellerService) {
     
   }
@@ -25,5 +25,11 @@ export class ViewProductComponent {
         this.productList = result
       }
     )
+   }
+   deleteProduct(id:string){
+    this.sellerSvc.deleteProduct(id).subscribe((res)=>{
+      this.deleteProductMsg = `Product Deleted`
+      this.viewProducts()
+    })
    }
 }
