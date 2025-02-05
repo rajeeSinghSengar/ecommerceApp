@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Product } from '../constant';
 import { SellerService } from '../services/seller.service';
 import { CommonModule } from '@angular/common';
+import { RouterEvent, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-view-product',
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './view-product.component.html',
   styleUrl: './view-product.component.scss'
 })

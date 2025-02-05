@@ -19,8 +19,10 @@
             <td><img [src]="list.imgUrl" alt="Clock Image">
             <!-- <img src="/clock.jpg" alt="Clock Image">  ADD Image in public folder  -->
         </td>
-        <td><button (click) = "deleteProduct(list.id)">Delete</button></td>
-            
+        <td>
+            <button (click) = "deleteProduct(list.id)">Delete</button>
+            <a routerLink ="seller-updateproduct/list.id">Update</a>
+        </td>
         </tr>
 
     </tbody>

@@ -5,6 +5,7 @@ import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { authGuard } from './auth.guard';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ViewProductComponent } from './view-product/view-product.component';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect root to Home
@@ -22,6 +23,12 @@ export const routes: Routes = [
   {
     path: 'seller-viewproduct',
     component: ViewProductComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'seller-updateproduct/:id', //The :id segment indicates a route parameter.
+    // This parameter allows the URL to include a dynamic value. 
+    component: UpdateProductComponent,
     canActivate: [authGuard]
   },
   { path: '**', component: HomeComponent },
