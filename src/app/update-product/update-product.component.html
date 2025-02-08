@@ -3,12 +3,13 @@
     <div class = "form">
         <h1>Update Product Form</h1>
         <p class="msg">{{updateProductMessage }}</p>
+        <p class="errmsg">{{errProductMessage }}</p>
         <form #updateProductForm ="ngForm" (ngSubmit) = "updateProduct(updateProductForm)">
-            <input class ="form-input" type ="text" placeholder="Enter Product" name ="productname" ngModel/>
-            <input class ="form-input" type ="text" placeholder="Enter Product Price" name ="productprice" ngModel/>
-            <textarea class ="form-input" type ="text" placeholder="Enter Product Description" name ="description" ngModel></textarea>
-            <input class ="form-input" type ="text" placeholder="Enter Product category" name ="category" ngModel/>
-            <input class ="form-input" type ="text" placeholder="Enter Image Url" name ="imgUrl" ngModel/>
+            <input class ="form-input" type ="text" placeholder="Enter Product" name ="productname" [(ngModel)] ="product.productname"/>
+            <input class ="form-input" type ="text" placeholder="Enter Product Price" name ="productprice" [(ngModel)] ="product.productprice"/>
+            <textarea class ="form-input" type ="text" placeholder="Enter Product Description" name ="description" [(ngModel)] ="product.description"></textarea>
+            <input class ="form-input" type ="text" placeholder="Enter Product category" name ="category" [(ngModel)] ="product.category"/>
+            <input class ="form-input" type ="text" placeholder="Enter Image Url" name ="imgUrl" [(ngModel)] ="product.imgUrl"/>
             <button class ="updateProduct">Update product</button>
         </form>
     </div>

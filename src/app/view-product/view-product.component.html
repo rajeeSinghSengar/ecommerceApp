@@ -21,7 +21,8 @@
         </td>
         <td>
             <button (click) = "deleteProduct(list.id)">Delete</button>
-            <a routerLink ="seller-updateproduct/list.id">Update</a>
+            <a routerLink ="/seller-updateproduct/{{list.id}}">Update</a> 
+             <!-- add '/'' before seller-updateproduct in router Link or it will take view-product in path too -->
         </td>
         </tr>
 

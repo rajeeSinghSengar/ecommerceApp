@@ -28,4 +28,10 @@ export class SellerService {
    deleteProduct(id:string){
     return this.http.delete(`${url}product/${id}`)
    }
+   getProductByid(id: string){
+          return this.http.get<Product>(`${url}product/${id}`)
+   }
+   updateProduct(data : Product, id: string){
+        return this.http.put<Product>(`${url}product/${id}`, data)
+   }
 }
