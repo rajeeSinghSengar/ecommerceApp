@@ -20,8 +20,8 @@
             <!-- <img src="/clock.jpg" alt="Clock Image">  ADD Image in public folder  -->
         </td>
         <td>
-            <button (click) = "deleteProduct(list.id)">Delete</button>
-            <a routerLink ="/seller-updateproduct/{{list.id}}">Update</a> 
+            <span (click) = "deleteProduct(list.id)"><mat-icon>delete</mat-icon></span>
+            <a routerLink ="/seller-updateproduct/{{list.id}}"><mat-icon style="color: green;">edit</mat-icon></a> 
              <!-- add '/'' before seller-updateproduct in router Link or it will take view-product in path too -->
         </td>
         </tr>
