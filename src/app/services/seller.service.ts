@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product, User, loginUser, url } from '../constant';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +37,10 @@ export class SellerService {
    trendyProduct(){
     return this.http.get<Product[]>(`${url}product?_limit=4`)
    }
+   getFilteredProducts(query: string): Observable<any> {
+    return this.http.get<any[]>('http://localhost:3000/product').pipe(
+      map(products => products.filter(p => p.productname.toLowerCase().includes(query.toLowerCase())))
+    );
+  }
+  
 }

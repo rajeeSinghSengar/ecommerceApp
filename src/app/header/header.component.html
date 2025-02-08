@@ -1,8 +1,13 @@
 <nav class="navbar">
     <h1><a routerLink= "home">Ecomm</a></h1>
     <div *ngIf ="menuType === 'default'" class="search">
-        <input type = "text" placeholder ="search"/>
-        <button>search</button>
+        <input #searchItem type = "text" placeholder ="search" (keyup) = "autosuggestionSearch($event)" (blur) =" removeAutoSearch()"/>
+        <button (click) =" submitSearch(searchItem.value)">search</button>
+        <ul class ="autosearch" *ngIf = "serchResult">
+            <li *ngFor =" let result of serchResult">
+               {{result.productname}}
+            </li>
+        </ul>
     </div>
     <div [ngSwitch]="menuType">
     <ul *ngSwitchCase ="'default'">

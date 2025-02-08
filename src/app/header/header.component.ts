@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { Route, Router, RouterLink } from '@angular/router';
+import { Route, Router, RouterLink } from '@angular/router';import { SellerService } from '../services/seller.service';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +11,11 @@ import { Route, Router, RouterLink } from '@angular/router';
 export class HeaderComponent {
 menuType : string = 'default';
 sellerName : string = "";
+serchResult : any;
 /**
  *
  */
-constructor(private route : Router) {
+constructor(private route : Router, private service : SellerService) {
   
 }
 ngOnInit(){
@@ -37,5 +38,35 @@ sellerLogOut(){
   console.log("seller log out ")
   localStorage.removeItem('seller');
   this.route.navigate(['home'])
+}
+autosuggestionSearch(event : KeyboardEvent)
+{
+  const input = event.target as HTMLInputElement
+   console.log(input);
+   console.log("input.value", input.value, input.value.length);
+  
+ if(input.value.length != 0)
+ {
+    this.service.getFilteredProducts(input.value).subscribe(
+      (res)=>{
+        console.log("printing filtered", res)
+        //limit the no of auto suggested product
+        if(res.length > 3){
+          res.length = 3 
+        }
+        this.serchResult = res
+      }
+    )
+  }
+  else{
+    this.serchResult = undefined
+  }
+
+}
+removeAutoSearch(){
+  this.serchResult = undefined
+}
+submitSearch(searchItem : string){
+ this.route.navigate([`search-product/:${searchItem}`])
 }
 }
