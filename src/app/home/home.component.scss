@@ -1,0 +1,40 @@
+.picsum-img-wrapper {
+    height: 500px;
+    overflow: hidden;
+  }
+  
+  .picsum-img-wrapper img {
+    width: 50%;
+    height: auto;
+  }
+  .product img{
+   width: 200px;
+   height: 250px;
+   border : solid 2px #ccc;
+   margin-top :20px;
+  }
+  .prodct-details{
+  }
+  .footer{
+    font-size : 12px;
+    margin-top: 20px;
+  }
+  a{
+    margin-right: 30px;
+    margin-left : 30px;
+
+  }
+  .product{
+    width:20%;
+    border : 1px solid #ddd;
+    text-align: center;
+    padding :5px;
+    font-size : 16px;
+    margin-left :10px;
+  }
+  h1{
+    text-align : center
+  }
+  .col-sm-3{
+    display : flex
+  }
