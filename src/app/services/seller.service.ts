@@ -34,4 +34,7 @@ export class SellerService {
    updateProduct(data : Product, id: string){
         return this.http.put<Product>(`${url}product/${id}`, data)
    }
+   trendyProduct(){
+    return this.http.get<Product[]>(`${url}product?_limit=4`)
+   }
 }
