@@ -38,7 +38,7 @@ export class SellerService {
     return this.http.get<Product[]>(`${url}product?_limit=4`)
    }
    getFilteredProducts(query: string): Observable<any> {
-    return this.http.get<any[]>('http://localhost:3000/product').pipe(
+        return this.http.get<any[]>('http://localhost:3000/product').pipe(
       map(products => products.filter(p => p.productname.toLowerCase().includes(query.toLowerCase())))
     );
   }

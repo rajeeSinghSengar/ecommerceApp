@@ -1,14 +1,20 @@
-<div class="container">
+@if(searchProductList){
+<div class="container" *ngFor = "let product of searchProductList">
     <!-- Image Section -->
     <div class="image-container">
-        <img src="/clock.jpg" alt="Product Image">
+        <a routerLink = "/product-detail/{{product.id}}"> <img src="{{product.imgUrl}}" alt="Product Image"></a>
     </div>
 
     <!-- Details Section -->
     <div class="details-container">
-        <h2>Product Name</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur convallis massa vitae arcu interdum.</p>
-        <p><strong>Price:</strong> $499</p>
-        <p><strong>Category:</strong> Electronics</p>
+        <a routerLink = "/product-detail/{{product.id}}"> <h2>{{product.productname}}</h2></a>
+        <p>{{product.description}}</p>
+        <p><strong>Price:</strong> ${{product.productprice}}</p>
+        <p><strong>Category:</strong> {{product.category}}</p>
     </div>
 </div>
+}
+<div class="no-results" *ngIf="searchProductList?.length === 0">
+    <p class ="noProduct">No products found.</p>
+  </div>
+

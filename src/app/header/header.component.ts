@@ -43,13 +43,11 @@ autosuggestionSearch(event : KeyboardEvent)
 {
   const input = event.target as HTMLInputElement
    console.log(input);
-   console.log("input.value", input.value, input.value.length);
   
  if(input.value.length != 0)
  {
     this.service.getFilteredProducts(input.value).subscribe(
       (res)=>{
-        console.log("printing filtered", res)
         //limit the no of auto suggested product
         if(res.length > 3){
           res.length = 3 
@@ -67,6 +65,6 @@ removeAutoSearch(){
   this.serchResult = undefined
 }
 submitSearch(searchItem : string){
- this.route.navigate([`search-product/:${searchItem}`])
+ this.route.navigate([`search-product/${searchItem}`]) //remeber don't pass : in url
 }
 }

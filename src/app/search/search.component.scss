@@ -22,7 +22,7 @@ body {
 .image-container img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 .details-container {
     width: 50%;
@@ -31,4 +31,11 @@ body {
     flex-direction: column;
     justify-content: center;
     background: #fff;
+}
+.noProduct{
+
+    text-align : center ;
+    font-size : 20px;
+    margin-top:30px;
+
 }
