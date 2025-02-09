@@ -61,10 +61,20 @@ autosuggestionSearch(event : KeyboardEvent)
   }
 
 }
-removeAutoSearch(){
-  this.serchResult = undefined
-}
+
 submitSearch(searchItem : string){
  this.route.navigate([`search-product/${searchItem}`]) //remeber don't pass : in url
 }
+redirectToSearch(id : string)
+{
+  this.route.navigate([`/product-detail/${id}`]) 
+
+}
+removeAutoSearch() {
+  setTimeout(() => {
+    this.serchResult = undefined
+  }, 200); // Small delay to allow click event
+}
+
+
 }

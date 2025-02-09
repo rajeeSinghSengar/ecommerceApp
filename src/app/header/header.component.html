@@ -1,10 +1,13 @@
 <nav class="navbar">
     <h1><a routerLink= "home">Ecomm</a></h1>
     <div *ngIf ="menuType === 'default'" class="search">
-        <input #searchItem type = "text" placeholder ="search" (keyup) = "autosuggestionSearch($event)" (blur) =" removeAutoSearch()"/>
+        <input #searchItem type = "text" placeholder ="search" (keyup) = "autosuggestionSearch($event)" (blur) ="removeAutoSearch()"/>
         <button (click) =" submitSearch(searchItem.value)">search</button>
-        <ul class ="autosearch" *ngIf = "serchResult">
-            <li *ngFor =" let result of serchResult">
+        <ul class ="autosearch" *ngIf = "serchResult" >
+            <!-- mousedown event will be executed before blur -->
+            <!-- so if we want to auto suggestion items remain if we click outside input in auto suggestion region
+            we need to trigger event which executes before blur -->
+            <li *ngFor =" let result of serchResult" (mousedown)="redirectToSearch(result.id)">
                {{result.productname}}
             </li>
         </ul>
