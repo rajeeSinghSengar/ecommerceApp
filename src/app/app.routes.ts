@@ -7,6 +7,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { ViewProductComponent } from './view-product/view-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { SearchComponent } from './search/search.component';
+import { ProductdetailComponent } from './productdetail/productdetail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect root to Home
@@ -29,6 +30,10 @@ export const routes: Routes = [
   {
     path: 'search-product/:query',
     component: SearchComponent,
+  },
+  {
+    path: 'product-detail/:id',
+    component: ProductdetailComponent,
   },
   {
     path: 'seller-updateproduct/:id', //The :id segment indicates a route parameter.

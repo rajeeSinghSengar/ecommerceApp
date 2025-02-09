@@ -1,0 +1,30 @@
+<div class="product-container" *ngIf = "product">
+    <!-- Left: Product Image -->
+    <div class="image-container">
+      <img src="{{product.imgUrl}}" alt="Product Image">
+    </div>
+  
+    <!-- Right: Product Details -->
+    <div class="details-container">
+      <h2>{{ product.productname }}</h2>
+      <p>{{ product.description }}</p>
+      <p><strong>Price:</strong> ${{ product.productprice }}</p>
+      <p><strong>Category:</strong> {{ product.category }}</p>
+  
+      <!-- Quantity Selection -->
+
+      <div class="quantity">
+        <label for="quantity">Quantity:</label>
+        <button (click)="decreaseQuantity()">−</button>
+        <input type="number" id="quantity" [(ngModel)]="quantity" min="1" max="10" readonly>
+        <button (click)="increaseQuantity()">+</button>
+      </div>
+  
+      <!-- Action Buttons -->
+      <div class="buttons">
+        <button class="buy-btn" (click)="buyNow()">Buy Now</button>
+        <button class="cart-btn" (click)="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  
