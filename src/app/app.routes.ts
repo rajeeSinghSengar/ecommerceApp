@@ -8,6 +8,7 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { SearchComponent } from './search/search.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
+import { UserSignupComponent } from './user-signup/user-signup.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect root to Home
@@ -41,5 +42,7 @@ export const routes: Routes = [
     component: UpdateProductComponent,
     canActivate: [authGuard]
   },
-  { path: '**', component: HomeComponent },
+  { path: 'user-signup', component: UserSignupComponent },
+  { path: '**', component: HomeComponent }, //always place wildcard at last
+ 
 ];
