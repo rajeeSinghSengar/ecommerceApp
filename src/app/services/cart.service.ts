@@ -14,9 +14,9 @@ export class CartService {
     let cartData = [];
     const existingCart = localStorage.getItem('localCart')!;
 
-    console.log(localStorage.getItem('localCart'))
     if(!localStorage.getItem('localCart')){
-      localStorage.setItem('localCart',JSON.stringify(data))
+      //while putting data in local storage we can explicitly insert it in array form
+      localStorage.setItem('localCart',JSON.stringify([data]))
     }
     else{
       cartData = JSON.parse(existingCart);
