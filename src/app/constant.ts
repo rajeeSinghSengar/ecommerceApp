@@ -14,6 +14,6 @@ export interface Product{
    category :string,
    imgUrl : string,
    id : string
-
+   quantity : undefined | number
 }
 export  const url = 'http://localhost:3000/'
