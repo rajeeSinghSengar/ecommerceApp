@@ -1,4 +1,5 @@
-<div  class ="seller-form">
+<div  class ="user-form">
+    <div *ngIf = "!userLogin">
     <h1>User SignUp</h1>
     <div class = "form">
         <form #userSubmit ="ngForm" (ngSubmit) = "signup(userSubmit.value)">
@@ -7,7 +8,21 @@
             <input class="form-input" type="email" placeholder ="Enter Email" name ="email" ngModel/>
             <button class="user-signup">SignUp</button>
             <!-- <a class="toggleLogin"(click)="toggleSignUp()">Already have account , click for Login</a> -->
+            <a class="toggleLogin"(click)="toggleSignUp()">Already have account , click for Login</a>
 
         </form>
+    </div>
+    </div>
+    <div *ngIf = "userLogin">
+    <h1>User Login</h1>
+    <div class = "form">
+        <form #userlogin ="ngForm" (ngSubmit) = "signlogin(userlogin.value)">
+            <input class="form-input" type="email" placeholder ="Enter Email" name ="email" ngModel/>
+            <input class="form-input" type="password" placeholder ="Enter Password" name ="password" ngModel/>
+            <button class="user-login">LogIn</button>
+            <!-- <a class="toggleLogin"(click)="toggleSignUp()">Already have account , click for Login</a> -->
+
+        </form>
+    </div>
     </div>
 </div>

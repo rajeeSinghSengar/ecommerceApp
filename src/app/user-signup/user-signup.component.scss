@@ -1,6 +1,11 @@
-.user-signup{
+.user-signup,.user-slogin{
     height: 30px;
   }
-  .seller-form{
+  .user-form{
     margin-left: 30%
+  }
+  .toggleLogin{
+    margin-top:20px;
+    color:blue;
+    cursor:pointer
   }
