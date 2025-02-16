@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../constant';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,9 @@ export class UserSignupComponent {
   constructor(private usersvc : UserService, private router : Router) {
 
     
+  }
+  ngOnInit(){
+    this.usersvc.userSignupReload()
   }
   signup(data : User){
     console.log(" user data ", data);
