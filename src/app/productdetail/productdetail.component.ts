@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs';
 import { SellerService } from '../services/seller.service';
 import { Product } from '../constant';
 import { CommonModule } from '@angular/common';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-productdetail',
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
 export class ProductdetailComponent {
  quantity : number = 1;
  product! : Product
-  constructor(private activatedRoute: ActivatedRoute, private service : SellerService){
+  constructor(private activatedRoute: ActivatedRoute, private service : SellerService, private cartSvc : CartService){
 
   }
   ngOnInit(){
@@ -44,7 +45,15 @@ export class ProductdetailComponent {
   }
   addToCart()
   {
-
+    if(this.product)
+    {
+      this.product.quantity = this.quantity
+      //add to cart when user is not logged in
+      if(!localStorage.getItem('user')){
+        this.cartSvc.addtoLocalCart(this.product)
+        console.log(" product ", this.product)
+      }
+    }
   }
   increaseQuantity() {
     if (this.quantity < 10) {
