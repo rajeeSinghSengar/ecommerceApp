@@ -35,7 +35,12 @@ export class UserSignupComponent {
     )
   }
   signlogin(data :loginUser){
-    
+    this.usersvc.checkUserLogin(data).subscribe(
+      (res : any) =>{
+         localStorage.setItem('user', JSON.stringify(res[0]))
+         this.router.navigate(['/'])
+      }
+    )
   }
   toggleSignUp(){
     this.userLogin = true;

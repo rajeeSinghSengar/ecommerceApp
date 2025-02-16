@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { url, User } from '../constant';
+import { loginUser, url, User } from '../constant';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -19,5 +19,8 @@ export class UserService {
       this.router.navigate(['/'])
     }
    }
+   checkUserLogin(data:loginUser){
+       return this.http.get(`${url}user?password=${data.password}&email=${data.email}`)
+      }
 
 }
