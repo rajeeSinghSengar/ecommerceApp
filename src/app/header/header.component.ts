@@ -12,6 +12,7 @@ export class HeaderComponent {
 menuType : string = 'default';
 sellerName : string = "";
 serchResult : any;
+  userName !: string;
 /**
  *
  */
@@ -21,23 +22,37 @@ constructor(private route : Router, private service : SellerService) {
 ngOnInit(){
   this.route.events.subscribe((val:any)=>{
     //check if route url has seller
-    if(val.url && val.url.includes('seller')){
-      //u need to check if user is logged in 
-      if(localStorage.getItem('seller')){
-      this.menuType = 'seller';
-       const seller = localStorage.getItem('seller')
-       this.sellerName = seller && JSON.parse(seller)[0].name;
+    if(val.url){
+      if (val.url.includes('seller'))
+      {
+        //u need to check if user is logged in 
+        if(localStorage.getItem('seller')){
+        this.menuType = 'seller';
+        const seller = localStorage.getItem('seller')
+        this.sellerName = seller && JSON.parse(seller)[0].name;
+        }
       }
+      if(localStorage.getItem('user')){
+        this.menuType = 'user';
+         const user = localStorage.getItem('user')
+         this.userName = user && JSON.parse(user).name;
+        }
+
     }
+
     else{
-      this.menuType = 'default';
+      this.menuType = 'default';    
     }
   })
 }
 sellerLogOut(){
-  console.log("seller log out ")
   localStorage.removeItem('seller');
   this.route.navigate(['home'])
+}
+userLogOut()
+{
+  localStorage.removeItem('user');
+  this.route.navigate(['/user-signup'])
 }
 autosuggestionSearch(event : KeyboardEvent)
 {
