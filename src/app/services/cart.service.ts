@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../constant';
+import { Cart, Product, url } from '../constant';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
    
   addtoLocalCart(data : Product){
     
@@ -24,4 +25,9 @@ export class CartService {
     }
     console.log(" add to cart ", cartData)
   }
+
+  addCarttoDB(Cart : Cart){
+   return this.http.post(`${url}\cart`, Cart)
+  }
+
 }

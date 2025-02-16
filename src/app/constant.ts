@@ -16,4 +16,14 @@ export interface Product{
    id : string
    quantity : undefined | number
 }
+export interface Cart{
+    productname : string,
+    productprice: number,
+    description: string,
+    category :string,
+    imgUrl : string,
+    quantity : undefined | number,
+    productId : string,
+    userId : string
+ }
 export  const url = 'http://localhost:3000/'
