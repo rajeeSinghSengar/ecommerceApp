@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Route, Router, RouterLink } from '@angular/router';import { SellerService } from '../services/seller.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ serchResult : any;
 /**
  *
  */
-constructor(private route : Router, private service : SellerService) {
+constructor(private route : Router, private service : SellerService, private cartSvc : CartService) {
   
 }
 ngOnInit(){
@@ -43,6 +44,11 @@ ngOnInit(){
           this.cartItems = localCart && JSON.parse(localCart).length
           console.log("localCart items ", this.cartItems)
       }
+      this.cartSvc.cartData.subscribe((items)=>
+        {
+          this.cartItems = items.length;
+      }
+    )
 
     }
 
@@ -51,6 +57,7 @@ ngOnInit(){
     }
   })
 }
+
 sellerLogOut(){
   localStorage.removeItem('seller');
   this.route.navigate(['home'])
