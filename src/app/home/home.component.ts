@@ -4,6 +4,7 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SellerService } from '../services/seller.service';
 import { Product } from '../constant';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../services/cart.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { RouterLink } from '@angular/router';
 export class HomeComponent {
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   trendy_productList : Product[] | undefined
-  constructor(private service : SellerService){
+  constructor(private service : SellerService, private cartSvc : CartService){
 
   }
 
@@ -26,6 +27,13 @@ export class HomeComponent {
           this.trendy_productList = res;
         },
         error :()=>{}
+      }
+     )
+     const user = localStorage.getItem('user')
+     let userid =user && JSON.parse(user).id;
+     this.cartSvc.getCartListByUserId(userid).subscribe(
+      (res)=>{
+        this.cartSvc.cartData.emit(res)
       }
      )
   }
