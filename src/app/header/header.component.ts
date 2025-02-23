@@ -13,6 +13,7 @@ menuType : string = 'default';
 sellerName : string = "";
 serchResult : any;
   userName !: string;
+  cartItems : number = 0;
 /**
  *
  */
@@ -37,6 +38,11 @@ ngOnInit(){
          const user = localStorage.getItem('user')
          this.userName = user && JSON.parse(user).name;
         }
+      if(localStorage.getItem('localCart')){
+          let localCart = localStorage.getItem('localCart')
+          this.cartItems = localCart && JSON.parse(localCart).length
+          console.log("localCart items ", this.cartItems)
+      }
 
     }
 
