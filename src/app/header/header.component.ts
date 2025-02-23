@@ -48,7 +48,7 @@ ngOnInit(){
       //once this event emitter function is called, we can get the updated cartdata every time its get modifed
       //note ngOninit will be called only once . we need to subscribe once and then it keep on listening to emitted value
       //needs to be executed at least once for the header component to start listening for updates.
-     this.cartEventEmitter();
+        this.cartEventEmitter();      
     }
 
     else{
@@ -72,6 +72,8 @@ sellerLogOut(){
 userLogOut()
 {
   localStorage.removeItem('user');
+  //once logOut emit cartdata which has no values
+  this.cartSvc.cartData.emit([])
   this.route.navigate(['/user-signup'])
 }
 autosuggestionSearch(event : KeyboardEvent)
