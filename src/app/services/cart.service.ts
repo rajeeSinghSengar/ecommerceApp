@@ -32,6 +32,9 @@ export class CartService {
    return this.http.post(`${url}\cart`, Cart)
   }
 
+  deleteCartItem(cartId: string) {
+    return this.http.delete<Product>(`${url}cart/${cartId}`);
+  }
   getCartListByUserId(userid : string){
     return this.http.get<Product[]>(`${url}\cart?userId=${userid}`)
   }

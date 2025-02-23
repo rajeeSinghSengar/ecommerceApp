@@ -17,6 +17,7 @@ export class ProductdetailComponent {
  quantity : number = 1;
  product! : Product;
  removecart : boolean = false;
+ cartData! : Product[];
   constructor(private activatedRoute: ActivatedRoute, private service : SellerService, private cartSvc : CartService){
 
   }
@@ -57,11 +58,11 @@ export class ProductdetailComponent {
           {
           this.cartSvc.getCartListByUserId(userId).subscribe((res)=>{
             if(res){
-              console.log("product detail ", res)
               this.cartSvc.cartData.emit(res)
               res= res.filter((item) =>{ 
                 return(item.id === this.product.id)                
               })
+              this.cartData = res;
               if(res.length > 0)
               {
               this.removecart = true;
@@ -114,6 +115,7 @@ export class ProductdetailComponent {
               this.cartSvc.getCartListByUserId(userId).subscribe((res)=>{
                 console.log("cartlist res", res)
                 this.removecart = true;
+                this.cartData = res //to store the cartdetails which is added now  which is used when we delete it
                 this.cartSvc.cartData.emit(res)
       
                })
@@ -138,7 +140,8 @@ export class ProductdetailComponent {
   }
   removeCart(){
     let localCart = localStorage.getItem('localCart')
-    this.removecart = false;
+    this.removecart = false; //toggle to show add to cart
+    //user not logged in //remove item from local cart storage
     if(localCart){
       let items : Product [] = localCart && JSON.parse(localCart)
 
@@ -153,7 +156,24 @@ export class ProductdetailComponent {
           localStorage.removeItem('localCart')
         }
            
-        
-    }}
+    }
+    //user logged in //remove cart in db
+    let user = localStorage.getItem('user')
+    let userId = user && JSON.parse(user).id
+    if(userId){
+      console.log("cartdata ",this.cartData)
+      let cartId = this.cartData[0].id
+      this.cartSvc.deleteCartItem(cartId).subscribe(
+        (res)=>{
+          console.log("res ", res)
+          this.cartSvc.getCartListByUserId(userId).subscribe((res)=>{
+            this.cartSvc.cartData.emit(res)
+          })
+        }
+      )
+    }
+    
   
 }
+
+  }
