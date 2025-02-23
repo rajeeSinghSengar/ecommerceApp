@@ -15,11 +15,13 @@ import { CartService } from '../services/cart.service';
 })
 export class ProductdetailComponent {
  quantity : number = 1;
- product! : Product
+ product! : Product;
+ removecart : boolean = false;
   constructor(private activatedRoute: ActivatedRoute, private service : SellerService, private cartSvc : CartService){
 
   }
   ngOnInit(){
+
     this.activatedRoute.paramMap
     .pipe(
       switchMap(
@@ -33,6 +35,22 @@ export class ProductdetailComponent {
       {
         next : (res) =>{
           this.product = res
+          let localCart = localStorage.getItem('localCart');
+          if(localCart)
+          {
+          console.log("local cart", localCart)
+          let items : Product [] = localCart && JSON.parse(localCart)
+          //once we apply filter we need to store returned value in some variable to store filtered values
+          items = items.filter((product) => product.id === this.product.id);
+          console.log( "items ", items)
+          if(items.length >0){
+            this.removecart = true;
+          }
+          else{
+            this.removecart = false;
+          }
+  
+          } 
          }
       }
     )
@@ -51,7 +69,11 @@ export class ProductdetailComponent {
       //add to cart when user is not logged in
       // we can keep data in local storage instead of DB for user who has not logged in
       if(!localStorage.getItem('user')){
-        this.cartSvc.addtoLocalCart(this.product)
+        if(!this.removecart) 
+        {      
+          this.cartSvc.addtoLocalCart(this.product)
+          this.removecart = true;
+        }
       }
       else{
          let user = localStorage.getItem('user')
@@ -83,4 +105,24 @@ export class ProductdetailComponent {
       this.quantity--;
     }
   }
+  removeCart(){
+    let localCart = localStorage.getItem('localCart')
+    this.removecart = false;
+    if(localCart){
+      let items : Product [] = localCart && JSON.parse(localCart)
+
+      items = items.filter((product) => product.id !== this.product.id);
+        if(items)
+        {
+          console.log("items ", items)
+            localStorage.setItem('localCart',JSON.stringify(items))
+            this.cartSvc.cartData.emit(items)
+        }
+        else{
+          localStorage.removeItem('localCart')
+        }
+           
+        
+    }}
+  
 }

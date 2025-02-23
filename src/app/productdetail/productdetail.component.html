@@ -23,7 +23,8 @@
       <!-- Action Buttons -->
       <div class="buttons">
         <button class="buy-btn" (click)="buyNow()">Buy Now</button>
-        <button class="cart-btn" (click)="addToCart()">Add to Cart</button>
+        <button *ngIf ="removecart"class="cart-btn" (click)="removeCart()">Remove from cart</button>
+        <button *ngIf ="!removecart"class="cart-btn" (click)="addToCart()">Add to  cart</button>
       </div>
     </div>
   </div>

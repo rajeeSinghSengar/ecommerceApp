@@ -17,13 +17,14 @@ export class CartService {
     if(!localStorage.getItem('localCart')){
       //while putting data in local storage we can explicitly insert it in array form
       localStorage.setItem('localCart',JSON.stringify([data]))
+      cartData.push(data)
     }
     else{
       cartData = JSON.parse(existingCart);
       cartData.push(data)
       localStorage.setItem('localCart',JSON.stringify(cartData))
-      this.cartData.emit(cartData)
     }
+    this.cartData.emit(cartData)
     console.log(" add to cart ", cartData)
   }
 
