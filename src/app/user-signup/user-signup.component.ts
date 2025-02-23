@@ -27,20 +27,30 @@ export class UserSignupComponent {
     
     this.usersvc.userSignup(data).subscribe(
       {
-        next: (res) =>{
+        next: async (res) =>{
           console.warn("printing res", res)
           localStorage.setItem("user",JSON.stringify(res.body))
-          this.addLocalCarttoRemoteDB();
+          await this.addLocalCarttoRemoteDB();
+          let user = localStorage.getItem('user');
+          let userid = user && JSON.parse(user).id
+          this.cartSvc.getCartListByUserId(userid).subscribe((res)=>{
+           this.cartSvc.cartData.emit(res)
+          }) 
            this.router.navigate(['/'])
         }
       }
     )
   }
-  signlogin(data :loginUser){
+ async signlogin(data :loginUser){
     this.usersvc.checkUserLogin(data).subscribe(
-      (res : any) =>{
+      async (res : any) =>{
          localStorage.setItem('user', JSON.stringify(res[0]))
-         this.addLocalCarttoRemoteDB()
+         await this.addLocalCarttoRemoteDB()
+         let user = localStorage.getItem('user');
+         let userid = user && JSON.parse(user).id
+         this.cartSvc.getCartListByUserId(userid).subscribe((res)=>{
+          this.cartSvc.cartData.emit(res)
+         }) 
          this.router.navigate(['/'])
       }
     )
@@ -51,12 +61,13 @@ export class UserSignupComponent {
   toggleLogin(){
     this.userLogin = false;
   }
-  addLocalCarttoRemoteDB(){
+ async addLocalCarttoRemoteDB(){
      let localcart = localStorage.getItem('localCart')!
      let user = localStorage.getItem('user');
+     let userid = user && JSON.parse(user).id
+
      if(localcart && user)
      {
-        let userid = JSON.parse(user).id
         let cartData: Product[] = JSON.parse(localcart)
         let cartList:Cart ;
         for(let index = 0; index < cartData.length ; index++)
@@ -84,8 +95,8 @@ export class UserSignupComponent {
                localStorage.removeItem('localCart')
              }
           }
-        }
-        
+   }
+
      }
   }
 
