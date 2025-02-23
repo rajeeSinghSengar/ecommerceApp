@@ -51,7 +51,29 @@ export class ProductdetailComponent {
           }
   
           } 
+          let user = localStorage.getItem('user')
+          let userId = user && JSON.parse(user).id
+          if(userId)
+          {
+          this.cartSvc.getCartListByUserId(userId).subscribe((res)=>{
+            if(res){
+              console.log("product detail ", res)
+              this.cartSvc.cartData.emit(res)
+              res= res.filter((item) =>{ 
+                return(item.id === this.product.id)                
+              })
+              if(res.length > 0)
+              {
+              this.removecart = true;
+              }
+              else{
+                this.removecart = false;
+              }
+            }
+           })
+
          }
+        }
       }
     )
  
@@ -72,9 +94,10 @@ export class ProductdetailComponent {
         if(!this.removecart) 
         {      
           this.cartSvc.addtoLocalCart(this.product)
-          this.removecart = true;
+          this.removecart = true;//toggle add to cart to remove fromcart
         }
       }
+      //add to cart when user is logged in
       else{
          let user = localStorage.getItem('user')
          let userId = user && JSON.parse(user).id
@@ -88,9 +111,17 @@ export class ProductdetailComponent {
           {
             next : (res) =>{
               console.log("res" , res)
+              this.cartSvc.getCartListByUserId(userId).subscribe((res)=>{
+                console.log("cartlist res", res)
+                this.removecart = true;
+                this.cartSvc.cartData.emit(res)
+      
+               })
             }
           }
          )
+         
+       
       }
     }
   }

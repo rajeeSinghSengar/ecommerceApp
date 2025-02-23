@@ -32,4 +32,8 @@ export class CartService {
    return this.http.post(`${url}\cart`, Cart)
   }
 
+  getCartListByUserId(userid : string){
+    return this.http.get<Product[]>(`${url}\cart?userId=${userid}`)
+  }
+
 }
