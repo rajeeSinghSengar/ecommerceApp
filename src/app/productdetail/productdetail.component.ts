@@ -52,7 +52,6 @@ export class ProductdetailComponent {
       // we can keep data in local storage instead of DB for user who has not logged in
       if(!localStorage.getItem('user')){
         this.cartSvc.addtoLocalCart(this.product)
-        console.log(" product ", this.product)
       }
       else{
          let user = localStorage.getItem('user')

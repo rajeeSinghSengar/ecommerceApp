@@ -22,6 +22,7 @@ constructor(private route : Router, private service : SellerService, private car
   
 }
 ngOnInit(){
+  console.log("insider header component")
   this.route.events.subscribe((val:any)=>{
     //check if route url has seller
     if(val.url){
@@ -44,12 +45,10 @@ ngOnInit(){
           this.cartItems = localCart && JSON.parse(localCart).length
           console.log("localCart items ", this.cartItems)
       }
-      this.cartSvc.cartData.subscribe((items)=>
-        {
-          this.cartItems = items.length;
-      }
-    )
-
+      //once this event emitter function is called, we can get the updated cartdata every time its get modifed
+      //note ngOninit will be called only once . we need to subscribe once and then it keep on listening to emitted value
+      //needs to be executed at least once for the header component to start listening for updates.
+     this.cartEventEmitter();
     }
 
     else{
@@ -58,6 +57,14 @@ ngOnInit(){
   })
 }
 
+cartEventEmitter(){
+     //CartData is an event emitter which gets emitted when user which is not logged in performs add to cart
+     this.cartSvc.cartData.subscribe((items)=>
+      {
+        this.cartItems = items.length;
+    }
+  )
+}
 sellerLogOut(){
   localStorage.removeItem('seller');
   this.route.navigate(['home'])
