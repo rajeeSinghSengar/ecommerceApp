@@ -1,0 +1,27 @@
+<div class="cart-container">
+    <!-- Cart Details (75%) -->
+    <div class="cart-details">
+      <h2>Shopping Cart</h2>
+      <div class="cart-item" *ngFor ="let cart of cartList">
+        <img src="{{cart.imgUrl}}" alt="Product Image">
+        <div class="item-info">
+          <h3>Product Name : {{cart.productname}}</h3>
+          <p><strong>Price:</strong> {{cart.productprice}}</p>
+          <p><strong>Quantity:</strong>{{cart.quantity}}</p>
+          <button class="remove-btn">Remove</button>
+        </div>
+      </div>
+  
+
+    </div>
+  
+    <!-- Order Summary (25%) -->
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <p>Subtotal: {{subTotal}}</p>
+      <p>Tax: {{tax}}</p>
+      <h3>Total: {{subTotal + tax}}</h3>
+      <button routerLink ="/user-checkout" class="checkout-btn">Proceed to Checkout</button>
+    </div>
+  </div>
+  
